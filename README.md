@@ -19,6 +19,18 @@ AI-powered legal research tool that uses RAG (Retrieval-Augmented Generation) to
 - **AI**: OpenAI gpt-4o + text-embedding-3-small
 
 ## Getting Started
+##INSTRUCTION TO INSTALL DB
+docker run -d  --name postgres-pgvector  -e POSTGRES_PASSWORD=password  -p 5432:5432  ankane/pgvector
+
+CREATE DATABASE mydb;
+
+(in db command)
+\c mydb
+
+CREATE EXTENSION vector;
+
+(exit db command - \q)
+ npm run db:push
 
 ### Prerequisites
 

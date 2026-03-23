@@ -1,22 +1,12 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-
 export async function GET(
-  request: Request,
+  request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
-    const id = params?.id;
-
-    if (!id) {
-      return NextResponse.json(
-        { error: "Missing ID" },
-        { status: 400 }
-      );
-    }
+    const { id } = params;
 
     const precedent = await prisma.precedentCase.findUnique({
       where: { id },

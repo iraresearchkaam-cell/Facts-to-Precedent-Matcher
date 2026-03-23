@@ -150,14 +150,18 @@ export async function POST(request: NextRequest) {
 
     const comparisonMemo = await generateStrategyMemo(extractedFacts, precedents);
 
-    await prisma.userSearch.create({
-      data: {
-        userId: "anonymous",
-        rawInput: text.slice(0, 1000),
-        extractedFacts: extractedFacts as any,
-        comparisonMemo,
-      },
-    });
+    try {
+      await prisma.userSearch.create({
+        data: {
+          userId: "anonymous",
+          rawInput: text.slice(0, 1000),
+          extractedFacts: extractedFacts as any,
+          comparisonMemo,
+        },
+      });
+    } catch (dbError) {
+      console.warn("Failed to save search history to DB:", dbError);
+    }
 
     return NextResponse.json({
       extractedFacts,

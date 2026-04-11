@@ -1,4 +1,4 @@
-# Facts-to-Precedent Matcher
+# Facts-to-Precedent Matcher 
 
 AI-powered legal research tool that uses RAG (Retrieval-Augmented Generation) to match case fact patterns against a precedents database.
 

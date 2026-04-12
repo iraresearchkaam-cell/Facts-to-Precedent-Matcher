@@ -1,0 +1,136 @@
+18:37:09.752 INFO  Scanner configuration file: /opt/homebrew/Cellar/sonar-scanner/8.0.1.6346/libexec/conf/sonar-scanner.properties
+18:37:09.755 INFO  Project root configuration file: NONE
+18:37:09.762 INFO  SonarScanner CLI 8.0.1.6346
+18:37:09.764 INFO  Mac OS X 26.4 aarch64
+18:37:11.613 INFO  Communicating with SonarQube Community Build 26.4.0.121862
+18:37:11.614 INFO  JRE provisioning: os[macos], arch[arm64]
+18:37:12.032 INFO  Starting SonarScanner Engine...
+18:37:12.032 INFO  Java 21.0.9 Eclipse Adoptium (64-bit)
+18:37:13.923 INFO  Load global settings
+18:37:14.008 INFO  Load global settings (done) | time=84ms
+18:37:14.010 INFO  Server id: 1ACAD261-AZ2ApnXMZm4dEgCdqoIc
+18:37:14.019 INFO  Loading required plugins
+18:37:14.020 INFO  Load plugins index
+18:37:14.035 INFO  Load plugins index (done) | time=15ms
+18:37:14.035 INFO  Load/download plugins
+18:37:14.054 INFO  Load/download plugins (done) | time=20ms
+18:37:14.219 INFO  Process project properties
+18:37:14.219 INFO  Process project properties (done) | time=0ms
+18:37:14.230 INFO  Project key: facts-to-precedent-matcher
+18:37:14.231 INFO  Base dir: /Users/mehulkhot/Documents/startup/Facts-to-Precedent-Matcher
+18:37:14.231 INFO  Working dir: /Users/mehulkhot/Documents/startup/Facts-to-Precedent-Matcher/.scannerwork
+18:37:14.236 INFO  Load project settings for component key: 'facts-to-precedent-matcher'
+18:37:14.260 INFO  Load project settings for component key: 'facts-to-precedent-matcher' (done) | time=24ms
+18:37:14.273 INFO  Load quality profiles
+18:37:14.315 INFO  Load quality profiles (done) | time=42ms
+18:37:14.338 INFO  Load active rules
+18:37:14.626 INFO  Load active rules (done) | time=287ms
+18:37:14.630 INFO  Load analysis cache
+18:37:14.651 INFO  Load analysis cache | time=20ms
+18:37:14.863 INFO  Preprocessing files...
+18:37:24.871 INFO  Preprocessed 0 files
+18:37:34.877 INFO  Preprocessed 0 files
+18:37:40.123 INFO  4 languages detected in 41 preprocessed files (done) | time=25257ms
+18:37:40.123 INFO  15803 files ignored because of scm ignore settings
+18:37:40.126 INFO  Loading plugins for detected languages
+18:37:40.126 INFO  Load/download plugins
+18:37:40.140 INFO  Load/download plugins (done) | time=11ms
+18:37:40.274 INFO  Load project repositories
+18:37:40.383 INFO  Load project repositories (done) | time=110ms
+18:37:40.400 INFO  Indexing files...
+18:37:40.400 INFO  Project configuration:
+18:37:40.405 INFO  40 files indexed (done) | time=5ms
+18:37:40.406 INFO  Quality profile for css: Sonar way
+18:37:40.406 INFO  Quality profile for js: Sonar way
+18:37:40.406 INFO  Quality profile for json: Sonar way
+18:37:40.406 INFO  Quality profile for ts: Sonar way
+18:37:40.406 INFO  ------------- Run sensors on module facts-to-precedent-matcher
+18:37:40.432 INFO  Load metrics repository
+18:37:40.450 INFO  Load metrics repository (done) | time=18ms
+18:37:40.626 INFO  Reflections took 51 ms to scan 1 urls, producing 25 keys and 261 values
+18:37:40.688 INFO  Sensor IaC CloudFormation Sensor [iac]
+18:37:40.710 INFO  There are no files to be analyzed for the CloudFormation language
+18:37:40.711 INFO  Sensor IaC CloudFormation Sensor [iac] (done) | time=23ms
+18:37:40.711 INFO  Sensor IaC cfn-lint report Sensor [iac]
+18:37:40.711 INFO  Sensor IaC cfn-lint report Sensor [iac] (done) | time=0ms
+18:37:40.711 INFO  Sensor IaC hadolint report Sensor [iac]
+18:37:40.711 INFO  Sensor IaC hadolint report Sensor [iac] (done) | time=0ms
+18:37:40.711 INFO  Sensor IaC Azure Resource Manager Sensor [iac]
+18:37:40.712 INFO  There are no files to be analyzed for the Azure Resource Manager language
+18:37:40.712 INFO  Sensor IaC Azure Resource Manager Sensor [iac] (done) | time=1ms
+18:37:40.712 INFO  Sensor Java Config Sensor [iac]
+18:37:40.714 INFO  There are no files to be analyzed for the Java language
+18:37:40.714 INFO  Sensor Java Config Sensor [iac] (done) | time=1ms
+18:37:40.714 INFO  Sensor IaC Docker Sensor [iac]
+18:37:40.715 INFO  There are no files to be analyzed for the Docker language
+18:37:40.715 INFO  Sensor IaC Docker Sensor [iac] (done) | time=0ms
+18:37:40.715 INFO  Sensor HTML [web]
+18:37:40.716 INFO  Sensor HTML [web] (done) | time=2ms
+18:37:40.716 INFO  Sensor JavaScript/TypeScript/CSS analysis [javascript]
+18:37:41.205 INFO  Detected os: Mac OS X arch: aarch64 alpine: false. Platform: DARWIN_ARM64
+18:37:41.205 INFO  Deploy location /Users/mehulkhot/.sonar/js/node-runtime, tagetRuntime: /Users/mehulkhot/.sonar/js/node-runtime/node,  version: /Users/mehulkhot/.sonar/js/node-runtime/version.txt
+18:37:41.337 INFO  Using embedded Node.js runtime.
+18:37:41.338 INFO  Using Node.js executable: '/Users/mehulkhot/.sonar/js/node-runtime/node'.
+18:37:42.700 INFO  Memory configuration: OS (18432 MB), Node.js (4288 MB).
+18:37:42.793 INFO  WebSocket client connected on /ws
+18:37:42.797 INFO  Plugin version: [12.3.0.39932]
+18:37:46.955 INFO  Found 1 tsconfig.json file(s): [/Users/mehulkhot/Documents/startup/Facts-to-Precedent-Matcher/tsconfig.json]
+18:37:46.956 INFO  27 source files to be analyzed
+18:37:46.956 INFO  Creating TypeScript(5.9.3) program with configuration file /Users/mehulkhot/Documents/startup/Facts-to-Precedent-Matcher/tsconfig.json [lib: lib.dom.d.ts, lib.dom.iterable.d.ts, lib.esnext.d.ts]
+18:37:46.956 INFO  Analyzing 24 file(s) from tsconfig /Users/mehulkhot/Documents/startup/Facts-to-Precedent-Matcher/tsconfig.json (552 total files in program)
+18:37:46.956 INFO  Analyzing 2 file(s) using merged compiler options [lib: lib.dom.d.ts, lib.dom.iterable.d.ts, lib.esnext.d.ts]
+18:37:46.956 INFO  27/27 source files have been analyzed
+18:37:46.957 INFO  Hit the cache for 0 out of 26
+18:37:46.957 INFO  Miss the cache for 26 out of 26: ANALYSIS_MODE_INELIGIBLE [26/26]
+18:37:46.957 INFO  Sensor JavaScript/TypeScript/CSS analysis [javascript] (done) | time=6240ms
+18:37:46.957 INFO  Sensor TextAndSecretsSensor [text]
+18:37:46.975 INFO  Available processors: 12
+18:37:46.975 INFO  Using 12 threads for analysis.
+18:37:47.130 INFO  The property "sonar.tests" is not set. To improve the analysis accuracy, we categorize a file as a test file if any of the following is true:
+  * The filename starts with "test"
+  * The filename contains "test." or "tests."
+  * Any directory in the file path is named: "doc", "docs", "test", "tests", "mock" or "mocks"
+  * Any directory in the file path has a name ending in "test" or "tests"
+
+18:37:47.143 INFO  Start fetching files for the text and secrets analysis
+18:37:47.182 INFO  Using Git CLI to retrieve dirty files
+18:37:47.225 INFO  Retrieving language associated files and files included via "sonar.text.inclusions" that are tracked by git
+18:37:47.226 INFO  Starting the text and secrets analysis
+18:37:47.227 INFO  34 source files to be analyzed for the text and secrets analysis
+18:37:47.236 WARN  Invalid character encountered in file /Users/mehulkhot/Documents/startup/Facts-to-Precedent-Matcher/.DS_Store at line 4 for encoding windows-1252. Please fix file content or configure the encoding to be used using property 'sonar.sourceEncoding'.
+18:37:47.239 WARN  The file '.DS_Store' contains binary data and will not be included in the text and secrets analysis.
+18:37:47.239 WARN  Please check this file and/or remove the extension from the 'sonar.text.inclusions' property.
+18:37:47.280 INFO  34/34 source files have been analyzed for the text and secrets analysis
+18:37:47.284 INFO  Sensor TextAndSecretsSensor [text] (done) | time=327ms
+18:37:47.287 INFO  ------------- Run sensors on project
+18:37:47.363 INFO  Sensor Zero Coverage Sensor
+18:37:47.371 INFO  Sensor Zero Coverage Sensor (done) | time=8ms
+18:37:47.372 INFO  ------------- Gather SCA dependencies on project
+18:37:47.373 INFO  Dependency analysis skipped
+18:37:47.377 INFO  SCM Publisher SCM provider for this project is: git
+18:37:47.379 INFO  SCM Publisher 8 source files to be analyzed
+18:37:47.678 INFO  SCM Publisher 0/8 source files have been analyzed (done) | time=299ms
+18:37:47.678 WARN  Missing blame information for the following files:
+18:37:47.678 WARN    * prisma/seed.ts
+18:37:47.678 WARN    * src/app/api/history/route.ts
+18:37:47.678 WARN    * scripts/test_suite.ts
+18:37:47.678 WARN    * src/components/drop-zone.tsx
+18:37:47.678 WARN    * src/components/memo-view.tsx
+18:37:47.678 WARN    * src/components/fact-card.tsx
+18:37:47.679 WARN    * src/components/ui/card.tsx
+18:37:47.679 WARN    * src/app/layout.tsx
+18:37:47.679 WARN  This may lead to missing/broken features in SonarQube
+18:37:47.683 INFO  CPD Executor 6 files had no CPD blocks
+18:37:47.684 INFO  CPD Executor Calculating CPD for 21 files
+18:37:47.722 INFO  CPD Executor CPD calculation finished (done) | time=39ms
+18:37:47.726 INFO  SCM revision ID '344319e28b7b3543103821d2d4f4d9dd8d677983'
+18:37:47.823 INFO  Analysis report generated in 95ms, dir size=483.9 kB
+18:37:47.907 INFO  Analysis report compressed in 84ms, zip size=174.5 kB
+18:37:48.005 INFO  Analysis report uploaded in 98ms
+18:37:48.007 INFO  ANALYSIS SUCCESSFUL, you can find the results at: http://localhost:9000/dashboard?id=facts-to-precedent-matcher
+18:37:48.007 INFO  Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+18:37:48.007 INFO  More about the report processing at http://localhost:9000/api/ce/task?id=8312d7d6-4ac0-4738-91d7-245fb9a52e5d
+18:37:48.233 INFO  Analysis total time: 34.159 s
+18:37:48.233 INFO  SonarScanner Engine completed successfully
+18:37:48.626 INFO  EXECUTION SUCCESS
+18:37:48.628 INFO  Total time: 38.878s

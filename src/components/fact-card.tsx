@@ -10,10 +10,21 @@ import { Badge } from "@/components/ui/badge";
 import type { ExtractedFacts } from "@/lib/openai";
 
 interface FactCardProps {
-  facts: ExtractedFacts;
+  readonly facts: ExtractedFacts;
 }
 
 export function FactCard({ facts }: FactCardProps) {
+  const partyKeys = new Map<string, number>();
+  const timelineKeys = new Map<string, number>();
+  const keywordKeys = new Map<string, number>();
+
+  const getItemKey = (value: string, keyMap: Map<string, number>) => {
+    const normalizedValue = value.trim();
+    const count = (keyMap.get(normalizedValue) ?? 0) + 1;
+    keyMap.set(normalizedValue, count);
+    return `${normalizedValue}-${count}`;
+  };
+
   return (
     <Accordion type="single" collapsible defaultValue="summary">
       <AccordionItem value="summary" className="border-0">
@@ -30,8 +41,8 @@ export function FactCard({ facts }: FactCardProps) {
             <div>
               <h4 className="text-sm font-medium text-text-secondary mb-2">Parties</h4>
               <ul className="space-y-1">
-                {facts.parties.map((party, i) => (
-                  <li key={i} className="text-text-primary text-sm">
+                {facts.parties.map((party) => (
+                  <li key={getItemKey(party, partyKeys)} className="text-text-primary text-sm">
                     {party}
                   </li>
                 ))}
@@ -46,9 +57,9 @@ export function FactCard({ facts }: FactCardProps) {
             <div>
               <h4 className="text-sm font-medium text-text-secondary mb-2">Timeline</h4>
               <ol className="space-y-1">
-                {facts.timeline.map((event, i) => (
-                  <li key={i} className="text-text-primary text-sm flex gap-2">
-                    <span className="text-text-muted shrink-0">{i + 1}.</span>
+                {facts.timeline.map((event, eventIndex) => (
+                  <li key={getItemKey(event, timelineKeys)} className="text-text-primary text-sm flex gap-2">
+                    <span className="text-text-muted shrink-0">{eventIndex + 1}.</span>
                     <span>{event}</span>
                   </li>
                 ))}
@@ -58,8 +69,12 @@ export function FactCard({ facts }: FactCardProps) {
             <div>
               <h4 className="text-sm font-medium text-text-secondary mb-2">Legal Keywords</h4>
               <div className="flex flex-wrap gap-2">
-                {facts.keywords.map((keyword, i) => (
-                  <Badge key={i} variant="outline" className="border-primary/30 text-primary">
+                {facts.keywords.map((keyword) => (
+                  <Badge
+                    key={getItemKey(keyword, keywordKeys)}
+                    variant="outline"
+                    className="border-primary/30 text-primary"
+                  >
                     {keyword}
                   </Badge>
                 ))}

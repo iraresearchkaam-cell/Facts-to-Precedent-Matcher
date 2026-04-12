@@ -27,17 +27,20 @@ interface ResultsTableProps {
 
 function getMatchColor(score: number): string {
   if (score >= 0.85) return "text-accent bg-accent/10";
-  if (score >= 0.70) return "text-warning bg-warning/10";
+  if (score >= 0.7) return "text-warning bg-warning/10";
   return "text-text-secondary bg-surface-raised";
 }
 
 function getMatchLabel(score: number): string {
   if (score >= 0.85) return "Strong";
-  if (score >= 0.70) return "Moderate";
+  if (score >= 0.7) return "Moderate";
   return "Weak";
 }
 
-export function ResultsTable({ results, onSelectCase }: ResultsTableProps) {
+export function ResultsTable({
+  results,
+  onSelectCase,
+}: Readonly<ResultsTableProps>) {
   if (results.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-12 text-center">

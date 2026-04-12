@@ -21,7 +21,7 @@ const icons = {
   error: XCircle,
 };
 
-export function ProgressSteps({ steps }: ProgressStepsProps) {
+export function ProgressSteps({ steps }: Readonly<ProgressStepsProps>) {
   return (
     <div className="space-y-3">
       {steps.map((step, index) => {

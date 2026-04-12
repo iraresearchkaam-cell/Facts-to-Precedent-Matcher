@@ -6,8 +6,8 @@ export const dynamic = "force-dynamic";
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    const page = parseInt(searchParams.get("page") || "1", 10);
-    const limit = parseInt(searchParams.get("limit") || "10", 10);
+    const page = Number.parseInt(searchParams.get("page") || "1", 10);
+    const limit = Number.parseInt(searchParams.get("limit") || "10", 10);
     const userId = searchParams.get("userId") || "anonymous";
 
     const [searches, total] = await Promise.all([

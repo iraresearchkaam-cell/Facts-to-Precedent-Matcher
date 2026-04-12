@@ -5,15 +5,16 @@ import { Upload, File, X, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface DropZoneProps {
-  onFileSelect: (file: File) => void;
-  isProcessing: boolean;
-  disabled?: boolean;
+  readonly onFileSelect: (file: File) => void;
+  readonly isProcessing: boolean;
+  readonly disabled?: boolean;
 }
 
 export function DropZone({ onFileSelect, isProcessing, disabled }: DropZoneProps) {
   const [isDragging, setIsDragging] = React.useState(false);
   const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
+  const inputId = React.useId();
 
   const handleDrag = React.useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -82,13 +83,8 @@ export function DropZone({ onFileSelect, isProcessing, disabled }: DropZoneProps
     [onFileSelect]
   );
 
-  const handleClick = () => {
-    if (!disabled && !isProcessing) {
-      inputRef.current?.click();
-    }
-  };
-
   const handleRemove = (e: React.MouseEvent) => {
+    e.preventDefault();
     e.stopPropagation();
     setSelectedFile(null);
     if (inputRef.current) {
@@ -96,8 +92,74 @@ export function DropZone({ onFileSelect, isProcessing, disabled }: DropZoneProps
     }
   };
 
+  let content: React.ReactNode;
+
+  if (isProcessing) {
+    content = (
+      <div className="flex flex-col items-center justify-center py-16 px-4">
+        <div className="relative">
+          <File className="h-12 w-12 text-primary mb-4" />
+          <Loader2 className="absolute -bottom-1 -right-1 h-5 w-5 text-primary animate-spin" />
+        </div>
+        <p className="text-text-primary font-medium">Analyzing document...</p>
+        <p className="text-text-muted text-sm mt-1">Extracting facts and searching precedents</p>
+      </div>
+    );
+  } else if (selectedFile) {
+    content = (
+      <div className="flex items-center justify-between py-8 px-6">
+        <div className="flex items-center gap-4">
+          <div className="p-3 rounded-lg bg-surface-raised">
+            <File className="h-8 w-8 text-primary" />
+          </div>
+          <div>
+            <p className="text-text-primary font-medium">{selectedFile.name}</p>
+            <p className="text-text-muted text-sm">
+              {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
+            </p>
+          </div>
+        </div>
+        <button
+          onClick={handleRemove}
+          className="p-2 rounded-lg hover:bg-surface-raised transition-colors"
+        >
+          <X className="h-5 w-5 text-text-secondary" />
+        </button>
+      </div>
+    );
+  } else {
+    content = (
+      <div className="flex flex-col items-center justify-center py-16 px-4">
+        <div
+          className={cn(
+            "p-4 rounded-full mb-4 transition-colors",
+            isDragging ? "bg-primary/20" : "bg-surface-raised"
+          )}
+        >
+          <Upload
+            className={cn(
+              "h-8 w-8 transition-colors",
+              isDragging ? "text-primary" : "text-text-secondary"
+            )}
+          />
+        </div>
+        <p className="text-text-primary font-medium mb-1">
+          Drag & drop your PDF here
+        </p>
+        <p className="text-text-muted text-sm mb-4">
+          or click to browse files
+        </p>
+        <p className="text-text-muted text-xs">
+          PDF only, max 10MB
+        </p>
+      </div>
+    );
+  }
+
   return (
-    <div
+    <label
+      htmlFor={disabled || isProcessing ? undefined : inputId}
+      aria-disabled={disabled || isProcessing}
       className={cn(
         "relative rounded-lg border-2 border-dashed transition-all duration-200 cursor-pointer",
         isDragging
@@ -110,9 +172,9 @@ export function DropZone({ onFileSelect, isProcessing, disabled }: DropZoneProps
       onDragLeave={handleDragOut}
       onDragOver={handleDrag}
       onDrop={handleDrop}
-      onClick={handleClick}
     >
       <input
+        id={inputId}
         ref={inputRef}
         type="file"
         accept="application/pdf"
@@ -121,61 +183,11 @@ export function DropZone({ onFileSelect, isProcessing, disabled }: DropZoneProps
         disabled={disabled || isProcessing}
       />
 
-      {isProcessing ? (
-        <div className="flex flex-col items-center justify-center py-16 px-4">
-          <div className="relative">
-            <File className="h-12 w-12 text-primary mb-4" />
-            <Loader2 className="absolute -bottom-1 -right-1 h-5 w-5 text-primary animate-spin" />
-          </div>
-          <p className="text-text-primary font-medium">Analyzing document...</p>
-          <p className="text-text-muted text-sm mt-1">Extracting facts and searching precedents</p>
-        </div>
-      ) : selectedFile ? (
-        <div className="flex items-center justify-between py-8 px-6">
-          <div className="flex items-center gap-4">
-            <div className="p-3 rounded-lg bg-surface-raised">
-              <File className="h-8 w-8 text-primary" />
-            </div>
-            <div>
-              <p className="text-text-primary font-medium">{selectedFile.name}</p>
-              <p className="text-text-muted text-sm">
-                {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
-              </p>
-            </div>
-          </div>
-          <button
-            onClick={handleRemove}
-            className="p-2 rounded-lg hover:bg-surface-raised transition-colors"
-          >
-            <X className="h-5 w-5 text-text-secondary" />
-          </button>
-        </div>
-      ) : (
-        <div className="flex flex-col items-center justify-center py-16 px-4">
-          <div className={cn(
-            "p-4 rounded-full mb-4 transition-colors",
-            isDragging ? "bg-primary/20" : "bg-surface-raised"
-          )}>
-            <Upload className={cn(
-              "h-8 w-8 transition-colors",
-              isDragging ? "text-primary" : "text-text-secondary"
-            )} />
-          </div>
-          <p className="text-text-primary font-medium mb-1">
-            Drag & drop your PDF here
-          </p>
-          <p className="text-text-muted text-sm mb-4">
-            or click to browse files
-          </p>
-          <p className="text-text-muted text-xs">
-            PDF only, max 10MB
-          </p>
-        </div>
-      )}
+      {content}
 
       {isDragging && (
         <div className="absolute inset-0 rounded-lg bg-primary/10 pointer-events-none" />
       )}
-    </div>
+    </label>
   );
 }

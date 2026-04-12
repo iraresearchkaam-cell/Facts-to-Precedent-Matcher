@@ -383,7 +383,7 @@ async function main() {
   console.log("Starting database seed...");
 
   for (const precedent of precedents) {
-    const { extractFactsFromText, generateEmbedding } = await import("../src/lib/openai.js");
+    const { generateEmbedding } = await import("../src/lib/openai.js");
 
     console.log(`Processing: ${precedent.caseName}`);
 
